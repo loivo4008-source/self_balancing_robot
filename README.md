@@ -65,8 +65,3 @@ media/          Demo GIF and analysis charts
 ## Results
 
 
-
-## Future improvements
-
-- [e.g. tune I-term more carefully / add complementary filter comparison /
-  wireless telemetry / etc.]
