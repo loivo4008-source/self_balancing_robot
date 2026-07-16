@@ -62,41 +62,9 @@ data/           Sample logged run (CSV)
 media/          Demo GIF and analysis charts
 ```
 
-## Building and flashing the firmware
-
-1. Open `firmware/self_balancing_robot.ino` in the Arduino IDE
-2. Select your ESP32 board under **Tools > Board**
-3. Select the correct COM port under **Tools > Port**
-4. Upload
-
-## Logging and analyzing data
-
-Install dependencies:
-```powershell
-pip install -r requirements.txt
-```
-
-List available serial ports:
-```powershell
-python logging/robot_logger.py --list
-```
-
-Log a run, with a live plot:
-```powershell
-python logging/robot_logger.py --port COM5 --plot
-```
-
-Generate a static, annotated chart from a logged run:
-```powershell
-python logging/plot_robot_log.py data/sample_run.csv --out media/pid_response_chart.png
-```
-
 ## Results
 
-![PID response chart](media/pid_response_chart.png)
 
-[A sentence or two describing what the chart shows — e.g. recovery
-behavior after a manual push, or before/after tuning comparison.]
 
 ## Future improvements
 
