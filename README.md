@@ -26,13 +26,26 @@ controller algorithm to keep it upright.
 
 ### Angle estimation
 
-Angle can be calculated using pure gyroscope by integrating the rate angle is changing. However, the gyroscope always has offsets so this method will be off overtime, accumulating a lot of errors when running for a while. Angle can also be calculated using accelerometer, but it is extremely prone to noise (error is huge even when just shaking, not good for robot). Therefore, gyroscope is inaccurate but stable, accelerometer is accurate but unstable => Combining the two, we have a good angle measurement using Kalman filter. 
+Angle can be calculated using pure gyroscope by integrating the rate angle is changing. 
+However, the gyroscope always has offsets so this method will be off overtime, accumulating 
+a lot of errors when running for a while. Angle can also be calculated using accelerometer, 
+but it is extremely prone to noise (error is huge even when just shaking, not good for robot). 
+Therefore, gyroscope is inaccurate but stable, accelerometer is accurate but unstable 
+=> Combining the two, we have a good angle measurement using Kalman filter. 
 
-Kalman filter will take angle measurement from the gyroscope, and based on the uncertainty of the gyro, it will partially take in the measurement of the accelerometer. If the gyro is far off, the angle will mostly from the accelerometer. If the gyro is working well and the uncertainty is low, the angle will mostly be from the gyro. 
+Kalman filter will take angle measurement from the gyroscope, and based on the uncertainty of the gyro, 
+it will partially take in the measurement of the accelerometer. 
+If the gyro is far off, the angle will mostly from the accelerometer. 
+If the gyro is working well and the uncertainty is low, the angle will mostly be from the gyro. 
 
 ### Control
 
-A PID control algorithm is applied to the robot. P means proportional, which will evaluate the error and respond proportionally to it (if error is high, P will be big). I is integral, which fixes the error over time (if the error is constant, I will be a positive number added to the output to lessen the error).D is derivative (rate of change of error), which predicts the error and fix it (if the robot is falling fast, the rate of change will be positive, P will add/ if the robot is recovering, the rate of change is negative, P will be subtracted from the output).
+A PID control algorithm is applied to the robot. P means proportional, 
+which will evaluate the error and respond proportionally to it (if error is high, P will be big). 
+I is integral, which fixes the error over time (if the error is constant, I will be a positive number 
+added to the output to lessen the error).D is derivative (rate of change of error), 
+which predicts the error and fix it (if the robot is falling fast, the rate of change will be positive, 
+P will add/ if the robot is recovering, the rate of change is negative, P will be subtracted from the output).
 
 - P will help the robot catch itself
 - I will fix error accumulated over time
